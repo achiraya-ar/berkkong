@@ -520,11 +520,14 @@ export async function downloadTextFile(
   fileName: string,
   content: string,
   mime = "application/json;charset=utf-8",
-): Promise<void> {
+): Promise<boolean> {
   if (isTauri()) {
     try {
-      await invoke("save_text_file", { defaultName: fileName, content });
-      return;
+      const savedPath = await invoke<string | null>("save_text_file", {
+        defaultName: fileName,
+        content,
+      });
+      return Boolean(savedPath);
     } catch (error) {
       console.error("BerkKong: native save failed, falling back to download", error);
     }
@@ -539,6 +542,7 @@ export async function downloadTextFile(
   anchor.click();
   anchor.remove();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  return true;
 }
 
 export function readTextFile(file: File): Promise<string> {

@@ -290,11 +290,13 @@ export function SettingsPage() {
       toast.error("เลือกข้อมูลที่จะส่งออกอย่างน้อย 1 ส่วน");
       return;
     }
-    await downloadTextFile(
+    const saved = await downloadTextFile(
       `berkkong-settings-${new Date().toISOString().slice(0, 10)}.json`,
       exportSettingsBackup(settings, exportSections, items),
     );
-    toast.success("ส่งออกการตั้งค่าแล้ว");
+    if (saved) {
+      toast.success("ส่งออกไฟล์การตั้งค่าแล้ว");
+    }
   };
 
   const handleImportFile = async (file: File | null) => {
