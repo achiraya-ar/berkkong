@@ -1,0 +1,83 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .app-shell,
+  .toast-region,
+  .modal-backdrop,
+  .print-toolbar,
+  .print-notice,
+  .print-screen,
+  .app-decor {
+    display: none !important;
+  }
+
+  .print-page {
+    min-height: 0 !important;
+    background: #fff !important;
+  }
+
+  .print-area {
+    display: block !important;
+  }
+
+  .print-area .sheet {
+    width: 210mm;
+    height: 296.9mm;
+    min-height: 296.9mm;
+    margin: 0 !important;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none !important;
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-area .sheet:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .print-area .sheet--system {
+    padding: 10mm 12.7mm 7.9mm;
+  }
+
+  .print-area .sheet--official {
+    padding: 11.4mm 14mm 7.1mm;
+  }
+
+  .print-area .sheet--system::before {
+    height: 1.85mm;
+  }
+
+  .print-area .doc-stamp {
+    opacity: 0.07;
+  }
+
+  .print-area .system-table td,
+  .print-area .official-table td {
+    break-inside: avoid;
+  }
+
+  .print-area .system-signatures,
+  .print-area .official-signatures {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

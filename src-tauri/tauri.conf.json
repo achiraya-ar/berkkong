@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "BerkKong",
+  "mainBinaryName": "BerkKong",
+  "version": "1.8.50",
+  "identifier": "com.berkkong.app",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "BerkKong — ระบบเบิกของ",
+        "width": 1440,
+        "height": 960,
+        "minWidth": 1100,
+        "minHeight": 720,
+        "resizable": true,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Productivity",
+    "shortDescription": "ระบบบันทึกการเบิกพัสดุและเวชภัณฑ์ที่มิใช่ยา",
+    "longDescription": "BerkKong — โปรแกรมบันทึกการเบิกพัสดุสำนักงานและเวชภัณฑ์ที่มิใช่ยา สำหรับหน่วยงานในโรงพยาบาล พิมพ์ใบเบิก 2 รูปแบบ ตั้งค่าผู้ลงนามแยกตามประเภท และเก็บประวัติไว้ในเครื่อง โดยไม่ติดตามจำนวนคงเหลือ",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

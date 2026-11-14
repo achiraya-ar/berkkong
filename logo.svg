@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- 1. Mickey 3D Dome Gradient (สีดำ 3 มิติ มีความโค้งนูนและไฮไลต์เหลือบเทาเข้ม) -->
+    <radialGradient id="mickeyBlack3D" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#4B4F5C" />
+      <stop offset="30%" stop-color="#222530" />
+      <stop offset="70%" stop-color="#111318" />
+      <stop offset="100%" stop-color="#050608" />
+    </radialGradient>
+
+    <!-- 2. Mickey Back Canvas Red Background (เปลี่ยนฉากหลังรอบนอกเป็นสีแดง เพื่อให้หูและหัวสีดำเด่นขึ้น) -->
+    <radialGradient id="mickeyRedBg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#E63946" />
+      <stop offset="70%" stop-color="#C51020" />
+      <stop offset="100%" stop-color="#80000A" />
+    </radialGradient>
+
+    <!-- 3. Metallic Black MacBook Frame -->
+    <linearGradient id="macBlackBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A2D3A" />
+      <stop offset="50%" stop-color="#181A24" />
+      <stop offset="100%" stop-color="#0E1017" />
+    </linearGradient>
+
+    <linearGradient id="macBlackBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#404456" />
+      <stop offset="100%" stop-color="#12141D" />
+    </linearGradient>
+
+    <!-- Clean Crisp White Screen -->
+    <linearGradient id="whiteScreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F3F4F6" />
+    </linearGradient>
+
+    <!-- 4. Classic Yellow Oval Buttons -->
+    <linearGradient id="yellowBtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFDE59" />
+      <stop offset="100%" stop-color="#FF914D" />
+    </linearGradient>
+
+    <!-- Drop Shadows for 3D Mickey Relief -->
+    <filter id="mickey3DRelief" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="25" stdDeviation="22" flood-color="#000000" flood-opacity="0.8" />
+      <feDropShadow dx="0" dy="-5" stdDeviation="8" flood-color="#555A6E" flood-opacity="0.4" />
+    </filter>
+
+    <filter id="mickeyShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity="0.55" />
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND: Red Canvas -->
+  <rect width="800" height="800" rx="160" fill="url(#mickeyRedBg)" />
+
+  <!-- MICKEY EARS & HEAD: BLACK 3D DOME -->
+  <g filter="url(#mickey3DRelief)">
+    <!-- Left Ear (3D Dome Black) -->
+    <circle cx="200" cy="190" r="145" fill="url(#mickeyBlack3D)" />
+    <!-- Right Ear (3D Dome Black) -->
+    <circle cx="600" cy="190" r="145" fill="url(#mickeyBlack3D)" />
+    <!-- Head/Body Base (3D Dome Black) -->
+    <circle cx="400" cy="400" r="230" fill="url(#mickeyBlack3D)" />
+  </g>
+
+  <!-- Specular Highlights (แสงสะท้อนผิวดำมันวาว) -->
+  <g opacity="0.25" pointer-events="none">
+    <ellipse cx="150" cy="130" rx="45" ry="25" fill="#FFFFFF" transform="rotate(-30 150 130)" />
+    <ellipse cx="550" cy="130" rx="45" ry="25" fill="#FFFFFF" transform="rotate(-30 550 130)" />
+    <ellipse cx="320" cy="270" rx="90" ry="45" fill="#FFFFFF" transform="rotate(-25 320 270)" />
+  </g>
+
+  <!-- CENTER: MacBook with BLACK Frame & WHITE Screen (Flat Style) -->
+  <g filter="url(#mickeyShadow)" transform="translate(0, -20)">
+    <!-- MacBook Display Lid Outer Frame (Black Metallic) -->
+    <rect x="160" y="200" width="480" height="320" rx="20" fill="url(#macBlackBody)" stroke="url(#macBlackBorder)" stroke-width="4" />
+
+    <!-- Black Screen Bezel (ขอบดำสนิท) -->
+    <rect x="175" y="215" width="450" height="290" rx="10" fill="#0A0B10" />
+
+    <!-- Screen Inner Display (White Screen - จอขาว) -->
+    <rect x="180" y="220" width="440" height="280" rx="6" fill="url(#whiteScreenGrad)" />
+
+    <!-- Camera Notch -->
+    <path d="M 370 215 L 430 215 L 426 227 C 424 230 420 231 416 231 L 384 231 C 380 231 376 230 374 227 Z" fill="#0A0B10" />
+    <circle cx="400" cy="222" r="3" fill="#222533" />
+
+    <!-- 3 macOS Window Controls (Red, Yellow, Green) -->
+    <g transform="translate(198, 236)">
+      <circle cx="0" cy="0" r="6" fill="#FF5F56" />
+      <circle cx="18" cy="0" r="6" fill="#FFBD2E" />
+      <circle cx="36" cy="0" r="6" fill="#27C93F" />
+    </g>
+
+    <!-- UI Wireframe Lines on White Screen -->
+    <g opacity="0.12" stroke="#1F2937" stroke-width="3" stroke-linecap="round">
+      <line x1="240" y1="300" x2="360" y2="300" />
+      <line x1="240" y1="330" x2="480" y2="330" />
+      <line x1="240" y1="360" x2="420" y2="360" />
+      <line x1="240" y1="390" x2="520" y2="390" />
+      <line x1="240" y1="420" x2="330" y2="420" />
+    </g>
+
+    <!-- Laptop Base / Hinge (Black Frame Accent) -->
+    <path d="M 120 520 L 680 520 L 660 540 C 650 546 630 548 610 548 L 190 548 C 170 548 150 546 140 540 Z" fill="url(#macBlackBody)" stroke="url(#macBlackBorder)" stroke-width="2" />
+    <path d="M 350 520 L 450 520 L 445 526 C 440 529 430 530 420 530 L 380 530 C 370 530 360 529 355 526 Z" fill="#12141D" />
+  </g>
+
+  <!-- ACCENT: Classic Yellow Oval Buttons (Flat Style) -->
+  <g filter="url(#mickeyShadow)">
+    <ellipse cx="330" cy="670" rx="36" ry="52" fill="url(#yellowBtnGrad)" />
+    <ellipse cx="470" cy="670" rx="36" ry="52" fill="url(#yellowBtnGrad)" />
+  </g>
+</svg>

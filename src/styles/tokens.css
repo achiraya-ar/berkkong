@@ -1,0 +1,61 @@
+:root {
+  color-scheme: light;
+
+  --font-body: "IBM Plex Sans Thai", "Sarabun", "Thonburi", "Leelawadee UI",
+    Tahoma, sans-serif;
+  --font-display: "Kanit", "IBM Plex Sans Thai", "Thonburi", sans-serif;
+  --font-doc: "Sarabun", "IBM Plex Sans Thai", "Thonburi", sans-serif;
+
+  --red-950: #5e0711;
+  --red-900: #7c0714;
+  --red-800: #9e0a1a;
+  --red-700: #bd0f20;
+  --red-600: #d51c2c;
+  --red-500: #e63946;
+  --red-100: #ffe4e7;
+  --red-50: #fff1f2;
+
+  --yellow-500: #ffde59;
+  --yellow-400: #ffe680;
+  --yellow-300: #fff0b1;
+  --yellow-600: #f2c62e;
+  --yellow-50: #fff9dd;
+
+  --ink: #1d1815;
+  --ink-soft: #3d3631;
+  --muted: #756a63;
+  --muted-light: #9b8f87;
+  --line: #ebe2d9;
+  --line-strong: #ddcfc3;
+  --canvas: #fbf7f1;
+  --canvas-deep: #f5ede4;
+  --paper: #fffdfa;
+  --white: #ffffff;
+
+  --green-700: #1b7a50;
+  --green-600: #219266;
+  --green-100: #dff8e9;
+  --green-50: #effbf4;
+
+  --orange-700: #a45b0a;
+  --orange-600: #c87911;
+  --orange-100: #ffedc9;
+  --orange-50: #fff8e9;
+
+  --shadow-sm: 0 1px 2px rgba(58, 30, 20, 0.04);
+  --shadow-card: 0 8px 24px -14px rgba(58, 30, 20, 0.18);
+  --shadow-lift: 0 22px 48px -24px rgba(58, 30, 20, 0.3);
+  --shadow-red: 0 12px 24px -12px rgba(189, 15, 32, 0.55);
+
+  --radius-xs: 7px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 30px;
+  --radius-full: 999px;
+
+  --topbar-height: 76px;
+  --page-max: 1540px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
