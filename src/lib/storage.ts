@@ -554,6 +554,17 @@ export function readTextFile(file: File): Promise<string> {
   });
 }
 
+export function isTauriApp(): boolean {
+  return isTauri();
+}
+
+export async function pickImportFile(): Promise<{
+  name: string;
+  content: string;
+} | null> {
+  return invoke<{ name: string; content: string } | null>("pick_import_file");
+}
+
 export const LAST_USER_STORAGE_KEY = "berkkong.last-user.v1";
 
 export function loadLastUser(): Person | null {

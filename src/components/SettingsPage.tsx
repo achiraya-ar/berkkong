@@ -28,6 +28,8 @@ import {
   parseSettingsBackup,
   downloadTextFile,
   readTextFile,
+  isTauriApp,
+  pickImportFile,
   type SettingsSection,
 } from "../lib/storage";
 import { Modal } from "./Modal";
@@ -299,18 +301,16 @@ export function SettingsPage() {
     }
   };
 
-  const handleImportFile = async (file: File | null) => {
-    if (!file) return;
+  const processImportText = (text: string, fileName: string) => {
     try {
-      const text = await readTextFile(file);
-      const raw = JSON.parse(text);
+      const raw = JSON.parse(text.replace(/^\uFEFF/, ""));
       const imported = parseSettingsBackup(raw);
       if (!imported) {
         toast.error("ไฟล์นี้ไม่ใช่ไฟล์สำรองการตั้งค่าของ BerkKong");
         return;
       }
       setImportPreview({
-        fileName: file.name,
+        fileName,
         raw,
         sections: imported.sections,
         itemCount: imported.items.length,
@@ -318,8 +318,33 @@ export function SettingsPage() {
       setImportSections(imported.sections);
     } catch {
       toast.error("ไฟล์สำรองไม่ถูกต้องหรืออ่านไม่ได้");
+    }
+  };
+
+  const handleImportFile = async (file: File | null) => {
+    if (!file) return;
+    try {
+      processImportText(await readTextFile(file), file.name);
+    } catch {
+      toast.error("ไฟล์สำรองไม่ถูกต้องหรืออ่านไม่ได้");
     } finally {
       if (importInputRef.current) importInputRef.current.value = "";
+    }
+  };
+
+  const handlePickImport = async () => {
+    if (!isTauriApp()) {
+      importInputRef.current?.click();
+      return;
+    }
+
+    try {
+      const picked = await pickImportFile();
+      if (picked) processImportText(picked.content, picked.name);
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "เปิดไฟล์นำเข้าไม่สำเร็จ",
+      );
     }
   };
 
@@ -369,6 +394,12 @@ export function SettingsPage() {
       importedParts.push(
         `รายการของเบิก ${formatQty(imported.items.length)} รายการ`,
       );
+    }
+    const firstSelected = SETTINGS_SECTION_OPTIONS.find((section) =>
+      selected.includes(section.id),
+    );
+    if (firstSelected) {
+      setActiveTab(firstSelected.id);
     }
     toast.success(`นำเข้า${importedParts.join(" และ")}แล้ว`);
     setImportPreview(null);
@@ -593,7 +624,7 @@ export function SettingsPage() {
                   <button
                     type="button"
                     className="backup-action"
-                    onClick={() => importInputRef.current?.click()}
+                    onClick={() => void handlePickImport()}
                   >
                     <span className="backup-action__icon">
                       <Upload size={20} />
