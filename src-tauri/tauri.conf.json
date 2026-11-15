@@ -13,12 +13,15 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "BerkKong — ระบบเบิกของ",
-        "width": 1440,
-        "height": 960,
-        "minWidth": 1100,
-        "minHeight": 720,
+        "width": 1280,
+        "height": 900,
+        "minWidth": 960,
+        "minHeight": 640,
         "resizable": true,
+        "visible": false,
+        "backgroundColor": "#fbf7f1",
         "center": true
       }
     ],
