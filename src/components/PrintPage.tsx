@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -36,28 +36,23 @@ export function PrintPage({
   const toast = useToast();
   const requisition = requisitions.find((entry) => entry.id === id);
   const [tab, setTab] = useState<FormTab>("system");
-  const [printRequested, setPrintRequested] = useState(false);
   const autoFired = useRef(false);
+
+  const printNow = useCallback(() => {
+    if (!requisition) return;
+    markPrinted(requisition.id);
+    window.print();
+    toast.info("เปิดหน้าต่างพิมพ์แล้ว", "เลือกเครื่องพิมพ์ หรือบันทึกเป็น PDF");
+  }, [requisition, markPrinted, toast]);
 
   useEffect(() => {
     if (!auto || !requisition || autoFired.current) return;
     const timer = window.setTimeout(() => {
       autoFired.current = true;
-      setPrintRequested(true);
+      printNow();
     }, 650);
     return () => window.clearTimeout(timer);
-  }, [auto, requisition?.id]);
-
-  useEffect(() => {
-    if (!printRequested || !requisition) return;
-    setPrintRequested(false);
-    markPrinted(requisition.id);
-    const timer = window.setTimeout(() => {
-      window.print();
-      toast.info("เปิดหน้าต่างพิมพ์แล้ว", "เลือกเครื่องพิมพ์ หรือบันทึกเป็น PDF");
-    }, 80);
-    return () => window.clearTimeout(timer);
-  }, [printRequested, requisition, markPrinted, toast]);
+  }, [auto, requisition?.id, printNow]);
 
   if (!requisition || requisition.status === "draft") {
     return (
@@ -129,7 +124,7 @@ export function PrintPage({
           <button
             type="button"
             className="btn btn--primary"
-            onClick={() => setPrintRequested(true)}
+            onClick={printNow}
           >
             <Printer size={17} />
             พิมพ์ 2 ใบ
