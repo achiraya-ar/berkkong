@@ -2,8 +2,8 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "BerkKong",
   "mainBinaryName": "BerkKong",
-  "version": "1.26.1114",
-  "identifier": "com.berkkong.app",
+  "version": "1.26.1116",
+  "identifier": "com.berkkong",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",

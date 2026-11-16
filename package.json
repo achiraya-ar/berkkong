@@ -1,7 +1,7 @@
 {
   "name": "berkkong",
   "private": true,
-  "version": "1.26.1114",
+  "version": "1.26.1116",
   "description": "BerkKong — ระบบเบิกของและเวชภัณฑ์ที่มิใช่ยา",
   "type": "module",
   "scripts": {

@@ -1,6 +1,6 @@
 [package]
 name = "berkkong"
-version = "1.26.1114"
+version = "1.26.1116"
 description = "BerkKong — ระบบเบิกของและเวชภัณฑ์ที่มิใช่ยา"
 authors = ["BerkKong"]
 edition = "2021"
